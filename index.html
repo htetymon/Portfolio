@@ -3,136 +3,36 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="The portfolio of Htet Yee Mon, a fullstack developer. Explore selected projects, skills, and ways to get in touch.">
+    <meta name="description" content="The portfolio of Htet Yee Mon, a fullstack developer.">
     <meta name="theme-color" content="#ffffff">
-    <title>Htet Yee Mon | Fullstack Developer</title>
+    <title>Home | Htet Yee Mon</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="js/main.js" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-
     <header class="site-header">
-      <a class="site-brand" href="#home" aria-label="Htet Yee Mon, home">Htet Yee Mon</a>
-      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation">
-        <span aria-hidden="true">☰</span>
-      </button>
+      <a class="site-brand" href="index.html" aria-label="Htet Yee Mon, home">Htet Yee Mon</a>
+      <button class="menu-toggle" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="primary-navigation"><span aria-hidden="true">☰</span></button>
       <nav id="primary-navigation" class="primary-navigation" aria-label="Main navigation">
         <ul>
-          <li><a href="#home" aria-current="page">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="index.html" aria-current="page">Home</a></li><li><a href="about.html">About</a></li><li><a href="skills.html">Skills</a></li><li><a href="projects.html">Projects</a></li><li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false">
-        <span aria-hidden="true">◐</span>
-        <span class="theme-toggle-label">Theme</span>
-      </button>
+      <button class="theme-toggle" type="button" aria-label="Switch to dark theme" aria-pressed="false"><span aria-hidden="true">◐</span><span class="theme-toggle-label">Theme</span></button>
     </header>
-
     <main id="main">
-      <section id="home" class="hero section" aria-labelledby="hero-title">
+      <section class="hero section" aria-labelledby="hero-title">
         <div class="hero-content">
           <p class="availability">Available for opportunities</p>
           <h1 id="hero-title">Hi, I’m Htet Yee Mon</h1>
           <p class="hero-role">Fullstack Developer</p>
           <p class="hero-intro">I build thoughtful, responsive web experiences and am growing my skills across frontend and backend development.</p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#projects">View my work</a>
-            <a class="button button-secondary" href="#contact">Get in touch</a>
-          </div>
+          <div class="hero-actions"><a class="button button-primary" href="projects.html">View my work</a><a class="button button-secondary" href="contact.html">Get in touch</a></div>
         </div>
-        <figure class="hero-visual">
-          <img src="assets/images/lightmode-avatar.png" alt="Illustration of Htet Yee Mon working at a computer" width="320" height="320">
-        </figure>
-      </section>
-
-      <section id="about" class="about section" aria-labelledby="about-title">
-        <div class="section-heading">
-          <p class="eyebrow">A little about me</p>
-          <h2 id="about-title">About</h2>
-        </div>
-        <div class="about-content">
-          <p>I’m Htet Yee Mon, a fullstack developer learning to create useful and accessible experiences for the web. I enjoy turning ideas into clear interfaces and understanding how each part of an application works together.</p>
-          <p>I’m currently building my skills in HTML, CSS, JavaScript, Node.js, and React. I’m interested in thoughtful design, problem solving, and continuing to learn through hands-on projects.</p>
-        </div>
-      </section>
-
-      <section id="skills" class="skills section" aria-labelledby="skills-title">
-        <div class="section-heading">
-          <p class="eyebrow">Tools I work with</p>
-          <h2 id="skills-title">Skills</h2>
-        </div>
-        <ul class="skills-list" aria-label="Technologies and current learning areas">
-          <li><span>HTML</span><span class="skill-level">Learning</span></li>
-          <li><span>CSS</span><span class="skill-level">Learning</span></li>
-          <li><span>JavaScript</span><span class="skill-level">Learning</span></li>
-          <li><span>Node.js</span><span class="skill-level">Learning</span></li>
-          <li><span>React</span><span class="skill-level">Learning</span></li>
-        </ul>
-      </section>
-
-      <section id="projects" class="projects section" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <p class="eyebrow">Things I’ve been making</p>
-          <h2 id="projects-title">Projects</h2>
-          <p>Practice projects and experiments from my learning journey.</p>
-        </div>
-        <div class="project-filters" role="group" aria-label="Filter projects by category">
-          <button type="button" class="filter-button" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" class="filter-button" data-filter="websites" aria-pressed="false">Websites</button>
-          <button type="button" class="filter-button" data-filter="javascript-apps" aria-pressed="false">JavaScript Apps</button>
-        </div>
-        <p class="project-count" aria-live="polite" aria-atomic="true">Projects will appear here.</p>
-        <div id="project-list" class="project-grid" aria-live="polite" aria-label="Projects">
-          <!-- Project cards will be rendered from the project data in js/main.js. -->
-        </div>
-      </section>
-
-      <section id="contact" class="contact section" aria-labelledby="contact-title">
-        <div class="section-heading">
-          <p class="eyebrow">Let’s connect</p>
-          <h2 id="contact-title">Contact</h2>
-          <p>Have a question or want to connect? Send me a note.</p>
-        </div>
-        <div class="contact-layout">
-          <form id="contact-form" novalidate>
-            <div class="form-field">
-              <label for="contact-name">Name</label>
-              <input id="contact-name" name="name" type="text" autocomplete="name" required minlength="2" aria-describedby="name-error">
-              <p class="field-error" id="name-error"></p>
-            </div>
-            <div class="form-field">
-              <label for="contact-email">Email</label>
-              <input id="contact-email" name="email" type="email" autocomplete="email" required aria-describedby="email-error">
-              <p class="field-error" id="email-error"></p>
-            </div>
-            <div class="form-field">
-              <label for="contact-message">Message</label>
-              <textarea id="contact-message" name="message" rows="6" required minlength="20" maxlength="500" aria-describedby="message-error message-count"></textarea>
-              <p class="field-hint" id="message-count">0 / 500 characters</p>
-              <p class="field-error" id="message-error"></p>
-            </div>
-            <button class="button button-primary" type="submit">Send message</button>
-            <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
-          </form>
-          <aside class="contact-links" aria-label="Other ways to connect">
-            <h3>Other ways to connect</h3>
-            <p>Email: <a href="mailto:htetyeemon@example.com">htetyeemon@example.com</a></p>
-            <ul class="social-links">
-              <li><a href="https://github.com/" target="_blank" rel="noopener noreferrer">GitHub <span class="visually-hidden">(opens in a new tab)</span></a></li>
-              <li><a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn <span class="visually-hidden">(opens in a new tab)</span></a></li>
-            </ul>
-          </aside>
-        </div>
+        <figure class="hero-visual"><img src="assets/images/lightmode-avatar.png" alt="Illustration of Htet Yee Mon working at a computer" width="320" height="320"></figure>
       </section>
     </main>
-
-    <footer class="site-footer">
-      <p>© <span id="current-year">2026</span> Htet Yee Mon. Built with HTML, CSS, and JavaScript.</p>
-      <a href="#home">Back to top</a>
-    </footer>
+    <footer class="site-footer"><p>© <span id="current-year">2026</span> Htet Yee Mon. Built with HTML, CSS, and JavaScript.</p><a href="index.html">Back to home</a></footer>
   </body>
 </html>

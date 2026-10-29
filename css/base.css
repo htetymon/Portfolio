@@ -31,6 +31,8 @@ html {
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   margin: 0;
   background: var(--color-bg);
@@ -154,6 +156,10 @@ main,
 .site-footer {
   width: min(100% - (2 * var(--page-gutter)), var(--content-width));
   margin-inline: auto;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .site-header {
@@ -405,6 +411,7 @@ main,
   gap: 0.5rem 1rem;
   padding-block: 1.5rem;
   border-top: 1px solid var(--color-border);
+  margin-top: auto;
 }
 
 .site-footer p {

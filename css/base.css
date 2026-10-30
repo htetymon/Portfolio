@@ -31,10 +31,6 @@ html[data-theme='dark'] {
   --shadow-soft: 0 2px 16px rgb(0 0 0 / 28%);
 }
 
-html[data-theme='light'] {
-  color-scheme: light;
-}
-
 body,
 .theme-toggle,
 .menu-toggle,

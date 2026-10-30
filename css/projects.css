@@ -12,7 +12,7 @@
   margin-bottom: 1rem;
 }
 
-.projects-page .section-heading h1 {
+.projects-page .section-heading h2 {
   margin-bottom: 0.6rem;
 }
 
@@ -109,7 +109,7 @@
   background: #fff;
 }
 
-.projects-page .project-card h2 {
+.projects-page .project-card h3 {
   margin-bottom: 0.5rem;
   color: #202124;
   font-family: 'Segoe UI', Arial, sans-serif;

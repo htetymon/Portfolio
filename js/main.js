@@ -11,7 +11,7 @@
     const preference = localStorage.getItem(themeStorageKey);
     if (!requestedTheme && (preference === 'dark' || preference === 'light')) savedTheme = preference;
   } catch {
-    // The site still works when browser storage is unavailable.
+
   }
 
   function applyTheme(theme) {
@@ -42,6 +42,14 @@
   applyTheme(savedTheme);
 
   if (menuToggle && primaryNavigation) {
+    function closeNavigation() {
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.setAttribute('aria-label', 'Open navigation menu');
+      primaryNavigation.dataset.open = 'false';
+      const icon = menuToggle.querySelector('[aria-hidden="true"]');
+      if (icon) icon.textContent = '☰';
+    }
+
     menuToggle.addEventListener('click', () => {
       const isOpen = menuToggle.getAttribute('aria-expanded') !== 'true';
       menuToggle.setAttribute('aria-expanded', String(isOpen));
@@ -51,13 +59,13 @@
       if (icon) icon.textContent = isOpen ? '×' : '☰';
     });
 
+    primaryNavigation.addEventListener('click', (event) => {
+      if (event.target.closest('a[href^="#"]')) closeNavigation();
+    });
+
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.setAttribute('aria-label', 'Open navigation menu');
-        primaryNavigation.dataset.open = 'false';
-        const icon = menuToggle.querySelector('[aria-hidden="true"]');
-        if (icon) icon.textContent = '☰';
+        closeNavigation();
         menuToggle.focus();
       }
     });
@@ -166,13 +174,13 @@
     }
   });
 
-  // Browsers can isolate storage between file:// pages. Carry the preference
   // on local page links in that case so it survives navigation in a static copy.
   if (window.location.protocol === 'file:') {
     document.querySelectorAll('a[href]').forEach((link) => {
       link.addEventListener('click', () => {
         const destination = new URL(link.href, window.location.href);
         if (destination.protocol !== 'file:' || !destination.pathname.endsWith('.html')) return;
+        if (destination.pathname === window.location.pathname && destination.hash) return;
         destination.searchParams.set('theme', root.dataset.theme || savedTheme);
         link.href = destination.href;
       });

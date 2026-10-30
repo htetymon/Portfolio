@@ -51,7 +51,7 @@
   text-transform: none;
 }
 
-.contact-page .section-heading h1 {
+.contact-page .section-heading h2 {
   margin-bottom: 0.55rem;
   font-family: var(--font-body);
   font-size: clamp(2.75rem, 5vw, 4rem);
@@ -223,7 +223,7 @@
     margin-bottom: 0.55rem;
   }
 
-  .contact-page .section-heading h1 {
+  .contact-page .section-heading h2 {
     margin-bottom: 0.3rem;
     font-size: clamp(2.25rem, 9vw, 3rem);
   }

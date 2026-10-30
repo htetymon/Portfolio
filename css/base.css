@@ -491,7 +491,7 @@ html[data-theme='dark'] .projects-page .project-card-content {
 }
 
 html[data-theme='dark'] .projects-page .project-category,
-html[data-theme='dark'] .projects-page .project-card h2,
+html[data-theme='dark'] .projects-page .project-card h3,
 html[data-theme='dark'] .projects-page .project-card-content > p:not(.project-technologies),
 html[data-theme='dark'] .projects-page .project-card .project-technologies,
 html[data-theme='dark'] .projects-page .project-technologies strong {

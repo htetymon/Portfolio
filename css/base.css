@@ -419,6 +419,34 @@ main {
   font-size: 0.9rem;
 }
 
+.footer-contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.footer-contact-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.footer-contact-links a:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.footer-contact-links img,
+.footer-contact-links svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  flex: 0 0 auto;
+}
+
 @media (max-width: 760px) {
   .site-header {
     position: relative;

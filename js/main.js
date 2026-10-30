@@ -84,6 +84,77 @@
     });
   }
 
+  const projects = [
+    {
+      title: 'Personal Portfolio',
+      description: 'A responsive portfolio introducing a developer, their skills, and contact details.',
+      category: 'websites',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      url: 'https://example.com/',
+    },
+    {
+      title: 'Cafe Website',
+      description: 'A simple cafe site featuring a menu, opening hours, and location.',
+      category: 'websites',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      url: 'https://example.com/',
+    },
+    {
+      title: 'Task List',
+      description: 'Add tasks, mark them complete, and keep track of daily work.',
+      category: 'javascript-apps',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      url: 'https://example.com/',
+    },
+    {
+      title: 'Tip Calculator',
+      description: 'Split a bill and calculate the tip amount for each person.',
+      category: 'javascript-apps',
+      technologies: ['HTML', 'CSS', 'JavaScript'],
+      url: 'https://example.com/',
+    },
+  ];
+
+  function createProjectCard(project) {
+    const card = document.createElement('article');
+    card.className = 'project-card';
+    card.dataset.category = project.category;
+
+    const category = document.createElement('p');
+    category.className = 'project-category';
+    category.textContent = project.category === 'websites' ? 'Website' : 'JavaScript App';
+
+    const content = document.createElement('div');
+    content.className = 'project-card-content';
+
+    const title = document.createElement('h3');
+    title.textContent = project.title;
+
+    const description = document.createElement('p');
+    description.textContent = project.description;
+
+    const technologies = document.createElement('p');
+    technologies.className = 'project-technologies';
+    const technologiesLabel = document.createElement('strong');
+    technologiesLabel.textContent = 'Tech:';
+    technologies.append(technologiesLabel, ` ${project.technologies.join(', ')}`);
+
+    const link = document.createElement('a');
+    link.href = project.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.textContent = `View ${project.title}`;
+
+    content.append(title, description, technologies, link);
+    card.append(category, content);
+    return card;
+  }
+
+  const projectList = document.querySelector('#project-list');
+  if (projectList) {
+    projectList.replaceChildren(...projects.map(createProjectCard));
+  }
+
   const projectFilters = document.querySelectorAll('.project-filters [data-filter]');
   const projectCards = document.querySelectorAll('.project-card[data-category]');
   const projectFilterStatus = document.querySelector('#project-filter-status');

@@ -78,11 +78,11 @@
           <p>A few practice projects from my learning journey.</p>
         </div>
         <div class="project-filters" role="group" aria-label="Filter projects by category">
-          <button type="button" class="filter-button" data-filter="all" aria-pressed="true">All</button>
-          <button type="button" class="filter-button" data-filter="websites" aria-pressed="false">Websites</button>
-          <button type="button" class="filter-button" data-filter="javascript-apps" aria-pressed="false">JavaScript Apps</button>
+          <button type="button" class="filter-button" data-filter="all" data-label="All" aria-pressed="true">All</button>
+          <button type="button" class="filter-button" data-filter="websites" data-label="Websites" aria-pressed="false">Websites</button>
+          <button type="button" class="filter-button" data-filter="javascript-apps" data-label="JavaScript Apps" aria-pressed="false">JavaScript Apps</button>
         </div>
-        <p id="project-filter-status" class="visually-hidden" aria-live="polite"></p>
+        <p id="project-filter-status" class="visually-hidden" aria-live="polite" aria-atomic="true"></p>
         <div class="project-carousel">
           <div id="project-list" class="project-grid" role="region" aria-roledescription="carousel" aria-label="Projects" tabindex="0">
           </div>

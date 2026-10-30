@@ -160,6 +160,19 @@
   const projectFilterStatus = document.querySelector('#project-filter-status');
 
   projectFilters.forEach((button) => {
+    const label = button.dataset.label || button.textContent.trim();
+    const count = button.dataset.filter === 'all'
+      ? projects.length
+      : projects.filter((project) => project.category === button.dataset.filter).length;
+    button.dataset.label = label;
+    button.textContent = `${label} (${count})`;
+  });
+
+  if (projectFilterStatus) {
+    projectFilterStatus.textContent = `All (${projectCards.length})`;
+  }
+
+  projectFilters.forEach((button) => {
     button.addEventListener('click', () => {
       const selectedCategory = button.dataset.filter;
       let visibleCount = 0;
@@ -175,8 +188,7 @@
       });
 
       if (projectFilterStatus) {
-        const categoryName = button.textContent.trim();
-        projectFilterStatus.textContent = `${visibleCount} ${visibleCount === 1 ? 'project' : 'projects'} shown for ${categoryName}.`;
+        projectFilterStatus.textContent = `${button.dataset.label} (${visibleCount})`;
       }
     });
   });

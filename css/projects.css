@@ -1,0 +1,195 @@
+/* Compact, horizontal project carousel */
+.projects-page {
+  display: flex;
+  min-height: calc(100svh - 10rem);
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 1rem;
+}
+
+.projects-page .section-heading {
+  max-width: 680px;
+  margin-bottom: 1rem;
+}
+
+.projects-page .section-heading h1 {
+  margin-bottom: 0.6rem;
+}
+
+.projects-page .section-heading p:last-child {
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.2rem;
+}
+
+.projects-page .project-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.2rem;
+}
+
+.projects-page .project-filters .filter-button {
+  padding-block: 0.65rem;
+}
+
+.project-carousel {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.projects-page .project-grid {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  gap: 0.9rem;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  padding: 0.35rem 0.2rem 0.75rem;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: var(--color-border) transparent;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+
+.projects-page .project-grid:focus-visible {
+  border-radius: 0.75rem;
+}
+
+.projects-page .project-card {
+  display: flex;
+  flex: 0 0 clamp(245px, 26vw, 285px);
+  min-height: 225px;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid #e3e1da;
+  border-radius: 0.85rem;
+  background: #f4eaf1;
+  scroll-snap-align: start;
+}
+
+.projects-page .project-card:nth-child(2) {
+  background: #eaf1fb;
+}
+
+.projects-page .project-card:nth-child(3) {
+  background: #f5f0e7;
+}
+
+.projects-page .project-card:nth-child(4) {
+  background: #eaf3e7;
+}
+
+.projects-page .project-category {
+  margin: 0;
+  padding: 0.35rem 0.95rem 0.65rem;
+  border-bottom: 1px solid rgb(35 35 35 / 7%);
+  color: #454545;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.projects-page .project-card-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0.55rem;
+  padding: 1rem;
+  border: 1px solid #eeece8;
+  border-radius: 0.7rem;
+  background: #fff;
+}
+
+.projects-page .project-card h2 {
+  margin-bottom: 0.5rem;
+  color: #202124;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 1.22rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.3;
+}
+
+.projects-page .project-card-content > p:not(.project-technologies) {
+  margin-bottom: 0.8rem;
+  color: #343a40;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.projects-page .project-card .project-technologies {
+  margin-top: auto;
+  margin-bottom: 0.75rem;
+  padding-top: 0.7rem;
+  border-top: 1px solid #e9e8e4;
+  color: #343a40;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 0.84rem;
+  line-height: 1.45;
+}
+
+.projects-page .project-technologies strong {
+  color: #202124;
+  font-weight: 700;
+}
+
+.projects-page .project-card a {
+  color: #315c81;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+.projects-page .project-card a:hover {
+  text-decoration-thickness: 2px;
+}
+
+@media (max-width: 760px) {
+  .projects-page {
+    min-height: auto;
+    padding-block: 0.75rem;
+  }
+
+  .projects-page .project-card {
+    flex-basis: min(82vw, 270px);
+    min-height: 215px;
+  }
+
+  .site-header .menu-toggle {
+    display: none;
+  }
+
+  .site-header .primary-navigation {
+    flex-basis: 100%;
+    order: 4;
+  }
+
+  .site-header .primary-navigation ul {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.1rem 0.75rem;
+    padding: 0.25rem 0;
+  }
+
+  .site-header .primary-navigation a {
+    padding-block: 0.2rem;
+    font-size: 0.875rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .projects-page .project-card {
+    flex-basis: min(74vw, 250px);
+    min-height: 205px;
+  }
+}

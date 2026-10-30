@@ -71,6 +71,10 @@
   scroll-snap-align: start;
 }
 
+.projects-page .project-card[hidden] {
+  display: none;
+}
+
 .projects-page .project-card:nth-child(2) {
   background: #eaf1fb;
 }

@@ -39,6 +39,32 @@
 
   applyTheme(savedTheme);
 
+  const projectFilters = document.querySelectorAll('.project-filters [data-filter]');
+  const projectCards = document.querySelectorAll('.project-card[data-category]');
+  const projectFilterStatus = document.querySelector('#project-filter-status');
+
+  projectFilters.forEach((button) => {
+    button.addEventListener('click', () => {
+      const selectedCategory = button.dataset.filter;
+      let visibleCount = 0;
+
+      projectFilters.forEach((filterButton) => {
+        filterButton.setAttribute('aria-pressed', String(filterButton === button));
+      });
+
+      projectCards.forEach((card) => {
+        const isVisible = selectedCategory === 'all' || card.dataset.category === selectedCategory;
+        card.hidden = !isVisible;
+        if (isVisible) visibleCount += 1;
+      });
+
+      if (projectFilterStatus) {
+        const categoryName = button.textContent.trim();
+        projectFilterStatus.textContent = `${visibleCount} ${visibleCount === 1 ? 'project' : 'projects'} shown for ${categoryName}.`;
+      }
+    });
+  });
+
   themeToggle?.addEventListener('click', () => {
     const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
     applyTheme(theme);

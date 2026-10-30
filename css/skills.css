@@ -1,23 +1,79 @@
 /* Skill logos and captions */
+.skills-page {
+  min-height: calc(100svh - 8.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: 1.25rem;
+}
+
+.skills-page .section-heading {
+  margin-bottom: 1.25rem;
+}
+
+.skills-page .section-heading h1 {
+  margin-bottom: 0.4rem;
+}
+
+.skills-page .section-heading p:last-child {
+  margin-bottom: 0;
+}
+
 .skills-list {
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .skills-list .skill-card {
-  min-height: 210px;
+  min-height: 155px;
   flex-direction: column;
   justify-content: center;
-  gap: 0.55rem;
-  padding: 1.5rem 1rem;
+  gap: 0.4rem;
+  padding: 1rem 0.75rem;
+  border-color: transparent;
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgb(25 30 40 / 7%);
   text-align: center;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.skill-card:nth-child(1) {
+  background: #fff1e9;
+}
+
+.skill-card:nth-child(2) {
+  background: #eaf5ff;
+}
+
+.skill-card:nth-child(3) {
+  background: #fff9d9;
+}
+
+.skill-card:nth-child(4) {
+  background: #edf7e9;
+}
+
+.skill-card:nth-child(5) {
+  background: #e9faff;
+}
+
+.skill-card:nth-child(6) {
+  background: #fff0e9;
+}
+
+.skill-card:nth-child(7) {
+  background: #f0efff;
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgb(25 30 40 / 12%);
 }
 
 .skill-card svg,
 .skill-card img {
-  width: clamp(3.75rem, 7vw, 5rem);
-  height: clamp(3.75rem, 7vw, 5rem);
-  margin-bottom: 0.25rem;
+  width: clamp(3rem, 5vw, 4rem);
+  height: clamp(3rem, 5vw, 4rem);
 }
 
 .skill-name {
@@ -32,17 +88,56 @@
 }
 
 @media (max-width: 760px) {
+  .skills-page {
+    min-height: auto;
+    padding-block: 1.25rem;
+  }
+
   .skills-list {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 480px) {
+  .site-header .menu-toggle {
+    display: none;
+  }
+
+  .site-header .primary-navigation {
+    flex-basis: 100%;
+    order: 4;
+  }
+
+  .site-header .primary-navigation ul {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    gap: 0.1rem 0.75rem;
+    padding: 0.25rem 0;
+  }
+
+  .site-header .primary-navigation a {
+    padding-block: 0.2rem;
+    font-size: 0.875rem;
+  }
+
   .skills-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .skills-list .skill-card {
-    min-height: 180px;
+    min-height: 112px;
+    gap: 0.25rem;
+    padding: 0.65rem 0.5rem;
+  }
+
+  .skill-card svg,
+  .skill-card img {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
+
+  .skill-name {
+    font-size: 1rem;
   }
 }

@@ -70,7 +70,10 @@
     });
 
     primaryNavigation.addEventListener('click', (event) => {
-      if (event.target.closest('a[href^="#"]')) closeNavigation();
+      const sectionLink = event.target.closest('a[href*="#"]');
+      if (sectionLink && window.matchMedia('(max-width: 760px)').matches) {
+        closeNavigation();
+      }
     });
 
     document.addEventListener('keydown', (event) => {

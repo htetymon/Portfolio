@@ -93,6 +93,16 @@
   }
 }
 
+@media (max-width: 760px) {
+  .hero-visual {
+    grid-row: 1;
+  }
+
+  .hero-content {
+    grid-row: 2;
+  }
+}
+
 @media (max-width: 400px) {
   .hero h1 {
     font-size: clamp(2.25rem, 10vw, 3rem);

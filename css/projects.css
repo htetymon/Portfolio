@@ -168,27 +168,6 @@
     min-height: 215px;
   }
 
-  .site-header .menu-toggle {
-    display: none;
-  }
-
-  .site-header .primary-navigation {
-    flex-basis: 100%;
-    order: 4;
-  }
-
-  .site-header .primary-navigation ul {
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    gap: 0.1rem 0.75rem;
-    padding: 0.25rem 0;
-  }
-
-  .site-header .primary-navigation a {
-    padding-block: 0.2rem;
-    font-size: 0.875rem;
-  }
 }
 
 @media (max-width: 420px) {

@@ -1,6 +1,8 @@
 (() => {
   const root = document.documentElement;
   const themeToggle = document.querySelector('.theme-toggle');
+  const menuToggle = document.querySelector('.menu-toggle');
+  const primaryNavigation = document.querySelector('#primary-navigation');
   const themeStorageKey = 'htet-yee-mon-theme';
 
   const requestedTheme = new URLSearchParams(window.location.search).get('theme');
@@ -38,6 +40,28 @@
   }
 
   applyTheme(savedTheme);
+
+  if (menuToggle && primaryNavigation) {
+    menuToggle.addEventListener('click', () => {
+      const isOpen = menuToggle.getAttribute('aria-expanded') !== 'true';
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', `${isOpen ? 'Close' : 'Open'} navigation menu`);
+      primaryNavigation.dataset.open = String(isOpen);
+      const icon = menuToggle.querySelector('[aria-hidden="true"]');
+      if (icon) icon.textContent = isOpen ? '×' : '☰';
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Open navigation menu');
+        primaryNavigation.dataset.open = 'false';
+        const icon = menuToggle.querySelector('[aria-hidden="true"]');
+        if (icon) icon.textContent = '☰';
+        menuToggle.focus();
+      }
+    });
+  }
 
   const projectFilters = document.querySelectorAll('.project-filters [data-filter]');
   const projectCards = document.querySelectorAll('.project-card[data-category]');

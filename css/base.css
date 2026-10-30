@@ -534,17 +534,26 @@ html[data-theme='dark'] .contact-page form > .button {
     display: inline-grid;
     width: 2.75rem;
     place-items: center;
-    order: 2;
+    order: 1;
     padding: 0;
   }
 
+  .site-brand {
+    display: none;
+  }
+
   .theme-toggle {
+    order: 2;
+  }
+
+  .site-header .primary-navigation {
+    display: none;
+    flex-basis: 100%;
     order: 3;
   }
 
-  .primary-navigation {
-    flex-basis: 100%;
-    order: 4;
+  .site-header .primary-navigation[data-open='true'] {
+    display: block;
   }
 
   .primary-navigation ul {

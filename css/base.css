@@ -18,6 +18,33 @@
   --shadow-soft: 0 2px 16px rgb(0 0 0 / 8%);
 }
 
+html[data-theme='dark'] {
+  color-scheme: dark;
+  --color-bg: #151515;
+  --color-surface: #202020;
+  --color-text: #f2f2ef;
+  --color-muted: #b8b8b3;
+  --color-border: #41413d;
+  --color-accent: #f2f2ef;
+  --color-accent-text: #171717;
+  --color-focus: #8ab4f8;
+  --shadow-soft: 0 2px 16px rgb(0 0 0 / 28%);
+}
+
+html[data-theme='light'] {
+  color-scheme: light;
+}
+
+body,
+.theme-toggle,
+.menu-toggle,
+.button,
+.filter-button,
+.form-field input,
+.form-field textarea {
+  transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+}
+
 *,
 *::before,
 *::after {
@@ -445,6 +472,55 @@ main {
   width: 1.2rem;
   height: 1.2rem;
   flex: 0 0 auto;
+}
+
+html[data-theme='dark'] .projects-page .project-card {
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+
+html[data-theme='dark'] .projects-page .project-card:nth-child(2),
+html[data-theme='dark'] .projects-page .project-card:nth-child(3),
+html[data-theme='dark'] .projects-page .project-card:nth-child(4) {
+  background: var(--color-surface);
+}
+
+html[data-theme='dark'] .projects-page .project-card-content {
+  border-color: var(--color-border);
+  background: #292929;
+}
+
+html[data-theme='dark'] .projects-page .project-category,
+html[data-theme='dark'] .projects-page .project-card h2,
+html[data-theme='dark'] .projects-page .project-card-content > p:not(.project-technologies),
+html[data-theme='dark'] .projects-page .project-card .project-technologies,
+html[data-theme='dark'] .projects-page .project-technologies strong {
+  color: var(--color-text);
+}
+
+html[data-theme='dark'] .projects-page .project-card .project-technologies,
+html[data-theme='dark'] .projects-page .project-category {
+  border-color: var(--color-border);
+}
+
+html[data-theme='dark'] .projects-page .project-card a {
+  color: #a9ceff;
+}
+
+html[data-theme='dark'] .skills-list .skill-card {
+  border-color: var(--color-border);
+  background: var(--color-surface);
+}
+
+html[data-theme='dark'] .contact-page .form-field input,
+html[data-theme='dark'] .contact-page .form-field textarea {
+  border-color: var(--color-border);
+}
+
+html[data-theme='dark'] .contact-page form > .button {
+  border-color: var(--color-accent);
+  background: var(--color-accent);
+  color: var(--color-accent-text);
 }
 
 @media (max-width: 760px) {

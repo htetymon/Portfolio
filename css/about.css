@@ -35,11 +35,19 @@
   object-fit: contain;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 900px) {
   .about-page {
     min-height: auto;
     grid-template-columns: 1fr;
     padding-block: 3rem;
+  }
+
+  .about-copy {
+    grid-row: 2;
+  }
+
+  .about-visual {
+    grid-row: 1;
   }
 
   .about-visual img {

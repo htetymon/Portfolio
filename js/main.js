@@ -74,6 +74,16 @@
     ];
     const status = document.querySelector('#form-status');
     const messageCount = document.querySelector('#message-count');
+    const confirmationDialog = document.querySelector('#message-confirmation');
+    const messageField = contactForm.elements.message;
+
+    function updateMessageCount() {
+      if (messageCount) {
+        messageCount.textContent = `${messageField.value.length} / ${messageField.maxLength} characters`;
+      }
+    }
+
+    updateMessageCount();
 
     function validateField(field) {
       const { input, error, label } = field;
@@ -95,11 +105,7 @@
       return !errorMessage;
     }
 
-    contactForm.elements.message.addEventListener('input', () => {
-      if (messageCount) {
-        messageCount.textContent = `${contactForm.elements.message.value.length} / ${contactForm.elements.message.maxLength} characters`;
-      }
-    });
+    messageField.addEventListener('input', updateMessageCount);
 
     fields.forEach((field) => {
       field.input.addEventListener('input', () => {
@@ -117,7 +123,12 @@
         return;
       }
 
-      if (status) status.textContent = 'Your message passed validation. Message sending is not configured yet.';
+      if (status) status.textContent = '';
+      if (confirmationDialog?.showModal) {
+        confirmationDialog.showModal();
+      } else {
+        window.alert('Demo only. Your message has not been sent.');
+      }
     });
   }
 

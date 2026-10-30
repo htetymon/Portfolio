@@ -43,6 +43,18 @@
 
   applyTheme(savedTheme);
 
+  function focusSectionFromHash() {
+    if (!window.location.hash) return;
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    target.setAttribute('tabindex', '-1');
+    requestAnimationFrame(() => target.focus({ preventScroll: true }));
+  }
+
+  focusSectionFromHash();
+
   if (backToTop) {
     const updateBackToTopVisibility = () => {
       backToTop.hidden = window.scrollY < 400;
@@ -73,7 +85,16 @@
     primaryNavigation.addEventListener('click', (event) => {
       const sectionLink = event.target.closest('a[href*="#"]');
       if (sectionLink && window.matchMedia('(max-width: 760px)').matches) {
+        const destination = new URL(sectionLink.href, window.location.href);
         closeNavigation();
+
+        if (event.detail === 0 && destination.pathname === window.location.pathname && destination.hash) {
+          const target = document.getElementById(decodeURIComponent(destination.hash.slice(1)));
+          if (target) {
+            target.setAttribute('tabindex', '-1');
+            requestAnimationFrame(() => target.focus({ preventScroll: true }));
+          }
+        }
       }
     });
 

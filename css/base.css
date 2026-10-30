@@ -215,6 +215,10 @@ main {
   list-style: none;
 }
 
+.primary-navigation {
+  order: 2;
+}
+
 .primary-navigation a {
   display: inline-block;
   padding: 0.45rem 0.2rem;
@@ -252,6 +256,10 @@ main {
   gap: 0.5rem;
   padding: 0.55rem 1rem;
   text-decoration: none;
+}
+
+.theme-toggle {
+  order: 3;
 }
 
 .theme-toggle:hover,
@@ -569,13 +577,13 @@ html[data-theme='dark'] .contact-page form > .button {
   }
 
   .theme-toggle {
-    order: 2;
+    order: 3;
   }
 
   .site-header .primary-navigation {
     display: none;
     flex-basis: 100%;
-    order: 3;
+    order: 2;
   }
 
   .site-header .primary-navigation[data-open='true'] {

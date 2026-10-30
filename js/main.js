@@ -65,6 +65,62 @@
     });
   });
 
+  const contactForm = document.querySelector('#contact-form');
+  if (contactForm) {
+    const fields = [
+      { input: contactForm.elements.name, error: document.querySelector('#name-error'), label: 'Name' },
+      { input: contactForm.elements.email, error: document.querySelector('#email-error'), label: 'Email address' },
+      { input: contactForm.elements.message, error: document.querySelector('#message-error'), label: 'Message' },
+    ];
+    const status = document.querySelector('#form-status');
+    const messageCount = document.querySelector('#message-count');
+
+    function validateField(field) {
+      const { input, error, label } = field;
+      const value = input.value.trim();
+      let errorMessage = '';
+
+      if (!value) {
+        errorMessage = `${label} is required.`;
+      } else if (input.type === 'email' && input.validity.typeMismatch) {
+        errorMessage = 'Enter a valid email address, such as name@example.com.';
+      } else if (input.minLength > 0 && value.length < input.minLength) {
+        errorMessage = `${label} must be at least ${input.minLength} characters.`;
+      } else if (input.maxLength > 0 && value.length > input.maxLength) {
+        errorMessage = `${label} must be ${input.maxLength} characters or fewer.`;
+      }
+
+      error.textContent = errorMessage;
+      input.setAttribute('aria-invalid', String(Boolean(errorMessage)));
+      return !errorMessage;
+    }
+
+    contactForm.elements.message.addEventListener('input', () => {
+      if (messageCount) {
+        messageCount.textContent = `${contactForm.elements.message.value.length} / ${contactForm.elements.message.maxLength} characters`;
+      }
+    });
+
+    fields.forEach((field) => {
+      field.input.addEventListener('input', () => {
+        if (field.input.getAttribute('aria-invalid') === 'true') validateField(field);
+        if (status) status.textContent = '';
+      });
+    });
+
+    contactForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const invalidFields = fields.filter((field) => !validateField(field));
+      if (invalidFields.length) {
+        if (status) status.textContent = 'Please fix the highlighted fields and try again.';
+        invalidFields[0].input.focus();
+        return;
+      }
+
+      if (status) status.textContent = 'Your message passed validation. Message sending is not configured yet.';
+    });
+  }
+
   themeToggle?.addEventListener('click', () => {
     const theme = root.dataset.theme === 'dark' ? 'light' : 'dark';
     applyTheme(theme);

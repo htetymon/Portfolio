@@ -113,6 +113,16 @@
   outline-offset: 1px;
 }
 
+.contact-page .form-field input[aria-invalid='true'],
+.contact-page .form-field textarea[aria-invalid='true'] {
+  border-color: #a12b2b;
+}
+
+.contact-page .form-field input[aria-invalid='true']:focus,
+.contact-page .form-field textarea[aria-invalid='true']:focus {
+  outline-color: rgb(161 43 43 / 20%);
+}
+
 .contact-page .field-hint {
   margin: 0.25rem 0 0;
   text-align: right;

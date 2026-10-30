@@ -3,6 +3,7 @@
   const themeToggle = document.querySelector('.theme-toggle');
   const menuToggle = document.querySelector('.menu-toggle');
   const primaryNavigation = document.querySelector('#primary-navigation');
+  const backToTop = document.querySelector('.back-to-top');
   const themeStorageKey = 'htet-yee-mon-theme';
 
   const requestedTheme = new URLSearchParams(window.location.search).get('theme');
@@ -40,6 +41,15 @@
   }
 
   applyTheme(savedTheme);
+
+  if (backToTop) {
+    const updateBackToTopVisibility = () => {
+      backToTop.hidden = window.scrollY < 400;
+    };
+
+    window.addEventListener('scroll', updateBackToTopVisibility, { passive: true });
+    updateBackToTopVisibility();
+  }
 
   if (menuToggle && primaryNavigation) {
     function closeNavigation() {

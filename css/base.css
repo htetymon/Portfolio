@@ -190,11 +190,15 @@ main {
 }
 
 .site-header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
   display: flex;
   min-height: 4.5rem;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  background: var(--color-bg);
 }
 
 .site-brand {
@@ -474,6 +478,32 @@ main {
   flex: 0 0 auto;
 }
 
+.back-to-top {
+  position: fixed;
+  z-index: 15;
+  right: clamp(1rem, 3vw, 2rem);
+  bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  width: 3.25rem;
+  height: 3.25rem;
+  place-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  box-shadow: var(--shadow-soft);
+  text-decoration: none;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
+}
+
+.back-to-top[hidden] {
+  display: none;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+}
+
 html[data-theme='dark'] .projects-page .project-card {
   border-color: var(--color-border);
   background: var(--color-surface);
@@ -525,7 +555,7 @@ html[data-theme='dark'] .contact-page form > .button {
 
 @media (max-width: 760px) {
   .site-header {
-    position: relative;
+    position: sticky;
     flex-wrap: wrap;
     padding-block: 0.75rem;
   }

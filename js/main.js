@@ -12,6 +12,7 @@
     const preference = localStorage.getItem(themeStorageKey);
     if (!requestedTheme && (preference === 'dark' || preference === 'light')) savedTheme = preference;
   } catch {
+    // Continue with the light theme when browser storage is unavailable.
 
   }
 
@@ -41,6 +42,18 @@
   }
 
   applyTheme(savedTheme);
+
+  function focusSectionFromHash() {
+    if (!window.location.hash) return;
+    const targetId = decodeURIComponent(window.location.hash.slice(1));
+    const target = document.getElementById(targetId);
+    if (!target) return;
+
+    target.setAttribute('tabindex', '-1');
+    requestAnimationFrame(() => target.focus({ preventScroll: true }));
+  }
+
+  focusSectionFromHash();
 
   if (backToTop) {
     const updateBackToTopVisibility = () => {
@@ -72,7 +85,16 @@
     primaryNavigation.addEventListener('click', (event) => {
       const sectionLink = event.target.closest('a[href*="#"]');
       if (sectionLink && window.matchMedia('(max-width: 760px)').matches) {
+        const destination = new URL(sectionLink.href, window.location.href);
         closeNavigation();
+
+        if (event.detail === 0 && destination.pathname === window.location.pathname && destination.hash) {
+          const target = document.getElementById(decodeURIComponent(destination.hash.slice(1)));
+          if (target) {
+            target.setAttribute('tabindex', '-1');
+            requestAnimationFrame(() => target.focus({ preventScroll: true }));
+          }
+        }
       }
     });
 
@@ -166,13 +188,11 @@
       : projects.filter((project) => project.category === button.dataset.filter).length;
     button.dataset.label = label;
     button.textContent = `${label} (${count})`;
-  });
 
-  if (projectFilterStatus) {
-    projectFilterStatus.textContent = `All (${projectCards.length})`;
-  }
+    if (button.dataset.filter === 'all' && projectFilterStatus) {
+      projectFilterStatus.textContent = `${label} (${projectCards.length})`;
+    }
 
-  projectFilters.forEach((button) => {
     button.addEventListener('click', () => {
       const selectedCategory = button.dataset.filter;
       let visibleCount = 0;
@@ -270,7 +290,7 @@
     }
   });
 
-  // on local page links in that case so it survives navigation in a static copy.
+  // Carry the selected theme between local HTML files, where storage may be isolated per file.
   if (window.location.protocol === 'file:') {
     document.querySelectorAll('a[href]').forEach((link) => {
       link.addEventListener('click', () => {

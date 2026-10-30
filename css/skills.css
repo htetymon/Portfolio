@@ -30,7 +30,7 @@
   justify-content: center;
   gap: 0.4rem;
   padding: 1rem 0.75rem;
-  border-color: transparent;
+  border-color: var(--color-border);
   border-radius: 1rem;
   box-shadow: 0 8px 24px rgb(25 30 40 / 7%);
   text-align: center;
